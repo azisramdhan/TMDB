@@ -17,7 +17,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="KitaMovie" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="TMDB" customModuleProvider="target">
             <connections>
                 <outlet property="backdropView" destination="jwl-dV-B9I" id="vjV-8f-6dZ"/>
                 <outlet property="collectionView" destination="DWX-SX-N67" id="Bs2-3l-lwF"/>
@@ -27,6 +27,7 @@
                 <outlet property="synopsisLabel" destination="gL2-t5-4Xb" id="DKG-5P-Nib"/>
                 <outlet property="timeLabel" destination="pRn-3s-75g" id="ZOw-91-9O4"/>
                 <outlet property="titleLabel" destination="tx6-Hg-2Z2" id="1jF-Wh-Fsj"/>
+                <outlet property="trailerButton" destination="zs7-PF-mEU" id="gP0-4r-kFf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -39,7 +40,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zP3-eB-0Lx">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="723.5"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jwl-dV-B9I">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
@@ -152,6 +153,26 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </collectionView>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zs7-PF-mEU">
+                                    <rect key="frame" x="24" y="655.5" width="366" height="44"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="sfB-fl-JQp"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Watch Trailer">
+                                        <fontDescription key="titleFontDescription" name="Lato-Medium" family="Lato" pointSize="16"/>
+                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="8"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="trailerTouchedUp:" destination="-1" eventType="touchUpInside" id="H3A-px-ASY"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -172,16 +193,20 @@
                                 <constraint firstItem="6LF-mv-mnJ" firstAttribute="bottom" secondItem="IZN-3y-4bC" secondAttribute="bottom" id="Jme-AV-d9m"/>
                                 <constraint firstAttribute="trailing" secondItem="DWX-SX-N67" secondAttribute="trailing" constant="24" id="K1s-Ow-zL2"/>
                                 <constraint firstItem="tx6-Hg-2Z2" firstAttribute="top" secondItem="jwl-dV-B9I" secondAttribute="bottom" constant="24" id="KUG-wD-0hk"/>
+                                <constraint firstAttribute="trailing" secondItem="zs7-PF-mEU" secondAttribute="trailing" constant="24" id="MfY-wu-I4h"/>
                                 <constraint firstItem="6LF-mv-mnJ" firstAttribute="top" secondItem="RbC-xV-ItK" secondAttribute="bottom" constant="8" id="Nlz-XZ-Mlb"/>
                                 <constraint firstItem="TE1-Xt-WVy" firstAttribute="top" secondItem="WaM-YT-sZj" secondAttribute="bottom" constant="18" id="O71-dx-FpI"/>
                                 <constraint firstItem="pRn-3s-75g" firstAttribute="leading" secondItem="WaM-YT-sZj" secondAttribute="trailing" id="U0I-bh-EOx"/>
                                 <constraint firstAttribute="trailing" secondItem="fny-xf-u0e" secondAttribute="trailing" constant="24" id="XiE-4m-B3f"/>
                                 <constraint firstItem="8k3-1F-GsK" firstAttribute="top" secondItem="HMj-h2-UYd" secondAttribute="bottom" constant="12" id="XlY-bv-B8L"/>
                                 <constraint firstItem="TE1-Xt-WVy" firstAttribute="leading" secondItem="zP3-eB-0Lx" secondAttribute="leading" constant="24" id="Zcg-Uy-Tu9"/>
+                                <constraint firstItem="zs7-PF-mEU" firstAttribute="leading" secondItem="zP3-eB-0Lx" secondAttribute="leading" constant="24" id="ZnW-g7-Wxf"/>
                                 <constraint firstItem="HMj-h2-UYd" firstAttribute="leading" secondItem="zP3-eB-0Lx" secondAttribute="leading" constant="24" id="ck7-Fa-gnP"/>
+                                <constraint firstItem="zs7-PF-mEU" firstAttribute="top" secondItem="DWX-SX-N67" secondAttribute="bottom" constant="24" id="dFF-z7-TbD"/>
                                 <constraint firstAttribute="trailing" secondItem="jwl-dV-B9I" secondAttribute="trailing" id="egY-Zt-OfP"/>
                                 <constraint firstItem="gL2-t5-4Xb" firstAttribute="leading" secondItem="Jfd-VA-vNw" secondAttribute="leading" id="fzo-ds-kC7"/>
                                 <constraint firstItem="RbC-xV-ItK" firstAttribute="leading" secondItem="tx6-Hg-2Z2" secondAttribute="trailing" constant="16" id="gey-17-ldf"/>
+                                <constraint firstAttribute="bottom" secondItem="zs7-PF-mEU" secondAttribute="bottom" constant="24" id="ja4-VN-PpV"/>
                                 <constraint firstItem="Jfd-VA-vNw" firstAttribute="leading" secondItem="zP3-eB-0Lx" secondAttribute="leading" constant="24" id="kia-Xx-cl3"/>
                                 <constraint firstItem="jwl-dV-B9I" firstAttribute="top" secondItem="zP3-eB-0Lx" secondAttribute="top" id="kve-TV-17U"/>
                                 <constraint firstItem="Jfd-VA-vNw" firstAttribute="top" secondItem="fny-xf-u0e" secondAttribute="bottom" constant="16" id="r8W-su-bbQ"/>

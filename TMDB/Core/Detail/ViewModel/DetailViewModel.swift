@@ -14,6 +14,9 @@ class DetailViewModel {
 
     var onSuccessGetReviews: (() -> Void)?
     var onErrorGetReviews: ((String) -> Void)?
+    
+    var onSuccessGetVideos: (() -> Void)?
+    var onErrorGetVideos: ((String) -> Void)?
 
     init(service: DetailDataService) {
         self.service = service
@@ -22,6 +25,7 @@ class DetailViewModel {
     private let service: DetailDataService?
     var movie: MovieDetail?
     var results: [Result] = []
+    var videos: Videos?
 
     func getMovieDetail(_ id: Int) {
         service?.getMovieDetailWith(id, successHandler: { data in
@@ -38,6 +42,15 @@ class DetailViewModel {
             self.onSuccessGetReviews?()
         }, errorHandler: { error in
             self.onErrorGetReviews?(error)
+        })
+    }
+    
+    func getVideos(_ id: Int) {
+        service?.getVideosWith(id, successHandler: { data in
+            self.videos = data
+            self.onSuccessGetVideos?()
+        }, errorHandler: { error in
+            self.onErrorGetVideos?(error)
         })
     }
 

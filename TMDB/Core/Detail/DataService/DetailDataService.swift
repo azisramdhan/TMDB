@@ -69,4 +69,35 @@ class DetailDataService {
         }
         task.resume()
     }
+    
+    func getVideosWith(_ id: Int, successHandler: @escaping (Videos?) -> Void,
+                       errorHandler: @escaping (String) -> Void) {
+        var components = URLComponents(string: "\(AppConstants.baseURL)/\(id)/videos")!
+        components.queryItems = [
+            URLQueryItem(name: "api_key", value: AppConstants.apiKey)
+        ]
+        let request = URLRequest(url: components.url!)
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+
+            guard error == nil else {
+                errorHandler(error!.localizedDescription)
+                return
+            }
+
+            guard let data = data else {
+                return
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(Videos?.self, from: data)
+                DispatchQueue.main.async {
+                    successHandler(response)
+                }
+            } catch {
+                errorHandler(error.localizedDescription)
+            }
+        }
+        task.resume()
+    }
 }

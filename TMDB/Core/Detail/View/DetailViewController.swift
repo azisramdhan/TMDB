@@ -17,7 +17,8 @@ class DetailViewController: BaseViewController {
     @IBOutlet private weak var synopsisLabel: UILabel!
     @IBOutlet private weak var favoriteSwitch: UISwitch!
     @IBOutlet private weak var collectionView: UICollectionView!
-
+    @IBOutlet private weak var trailerButton: UIButton!
+    
     private weak var appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
 
     private let movieDetailVM: DetailViewModel = {
@@ -29,6 +30,7 @@ class DetailViewController: BaseViewController {
     static var cellReuseId = "ReviewCollectionViewCell"
 
     var onFavoriteStatusChanged: ((Bool) -> Void)?
+    var onTrailerButtonClicked: (() -> Void)?
     var movieId: Int?
 
     override func viewDidLoad() {
@@ -45,7 +47,10 @@ class DetailViewController: BaseViewController {
         }
         favoriteSwitch.isOn = movieDetailVM.isFavorites(appDelegate, id: movieId)
     }
-
+    @IBAction func trailerTouchedUp(_ sender: Any) {
+        onTrailerButtonClicked?()
+    }
+    
     @IBAction func valueChanged(_ sender: UISwitch) {
         guard let appDelegate = appDelegate else {
             return
@@ -90,6 +95,16 @@ class DetailViewController: BaseViewController {
             self.hideIndicatorView()
             print(error)
         }
+        
+        movieDetailVM.onSuccessGetVideos = {
+            self.hideIndicatorView()
+            self.setupVideo()
+        }
+
+        movieDetailVM.onErrorGetVideos = { error in
+            self.hideIndicatorView()
+            print(error)
+        }
     }
 
     private func fetchData() {
@@ -100,7 +115,7 @@ class DetailViewController: BaseViewController {
 
         movieDetailVM.getMovieDetail(movieId)
         movieDetailVM.getReviews(movieId)
-
+        movieDetailVM.getVideos(movieId)
     }
 
     private func setup(_ data: MovieDetail) {
@@ -125,6 +140,17 @@ class DetailViewController: BaseViewController {
             return
         }
         fetchImageFrom(url)
+    }
+    
+    private func setupVideo() {
+        if let video = movieDetailVM.videos?.results?.first, let url = video.youtubeURL {
+            trailerButton.isHidden = false
+            onTrailerButtonClicked = {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        } else {
+            trailerButton.isHidden = true
+        }
     }
 
     private func fetchImageFrom(_ url: URL) {
