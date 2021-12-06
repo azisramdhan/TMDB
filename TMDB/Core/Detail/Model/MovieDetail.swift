@@ -15,7 +15,7 @@ struct MovieDetail: Codable {
     let homepage: String?
     let id: Int?
     let imdbID, originalLanguage, originalTitle, overview: String?
-    let popularity: Double?
+    let popularity: Int?
     let posterPath: String?
     let productionCompanies: [ProductionCompany]?
     let productionCountries: [ProductionCountry]?
@@ -26,6 +26,8 @@ struct MovieDetail: Codable {
     let video: Bool?
     let voteAverage: Double?
     let voteCount: Int?
+    let videos: Videos?
+    let credits: Credits?
 
     enum CodingKeys: String, CodingKey {
         case adult
@@ -45,6 +47,7 @@ struct MovieDetail: Codable {
         case status, tagline, title, video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+        case videos, credits
     }
 }
 
@@ -60,6 +63,44 @@ struct BelongsToCollection: Codable {
     }
 }
 
+// MARK: - Credits
+struct Credits: Codable {
+    let cast: [Cast]?
+    let crew: [Crew]?
+}
+
+// MARK: - Cast
+struct Cast: Codable {
+    let castID: Int?
+    let character, creditID: String?
+    let gender, id: Int?
+    let name: String?
+    let order: Int?
+    let profilePath: String?
+
+    enum CodingKeys: String, CodingKey {
+        case castID = "cast_id"
+        case character
+        case creditID = "credit_id"
+        case gender, id, name, order
+        case profilePath = "profile_path"
+    }
+}
+
+// MARK: - Crew
+struct Crew: Codable {
+    let creditID, department: String?
+    let gender, id: Int?
+    let job, name: String?
+    let profilePath: String?
+
+    enum CodingKeys: String, CodingKey {
+        case creditID = "credit_id"
+        case department, gender, id, job, name
+        case profilePath = "profile_path"
+    }
+}
+
 // MARK: - Genre
 struct Genre: Codable {
     let id: Int?
@@ -69,7 +110,8 @@ struct Genre: Codable {
 // MARK: - ProductionCompany
 struct ProductionCompany: Codable {
     let id: Int?
-    let logoPath, name, originCountry: String?
+    let logoPath: String?
+    let name, originCountry: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -81,21 +123,47 @@ struct ProductionCompany: Codable {
 
 // MARK: - ProductionCountry
 struct ProductionCountry: Codable {
-    let iso31661, name: String?
+    let iso3166_1, name: String?
 
     enum CodingKeys: String, CodingKey {
-        case iso31661 = "iso_3166_1"
+        case iso3166_1 = "iso_3166_1"
         case name
     }
 }
 
 // MARK: - SpokenLanguage
 struct SpokenLanguage: Codable {
-    let englishName, iso6391, name: String?
+    let iso639_1, name: String?
 
     enum CodingKeys: String, CodingKey {
-        case englishName = "english_name"
-        case iso6391 = "iso_639_1"
+        case iso639_1 = "iso_639_1"
         case name
+    }
+}
+
+// MARK: - Videos
+struct Videos: Codable {
+    let results: [Video]?
+}
+
+// MARK: - Video
+struct Video: Codable {
+    let id, iso639_1, iso3166_1, key: String?
+    let name, site: String?
+    let size: Int?
+    let type: String?
+    
+    var youtubeURL: URL? {
+        guard site == "YouTube", let key = key else {
+            return nil
+        }
+        return URL(string: "https://youtube.com/watch?v=\(key)")
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case iso639_1 = "iso_639_1"
+        case iso3166_1 = "iso_3166_1"
+        case key, name, site, size, type
     }
 }
