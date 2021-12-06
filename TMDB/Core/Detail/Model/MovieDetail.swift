@@ -15,7 +15,7 @@ struct MovieDetail: Codable {
     let homepage: String?
     let id: Int?
     let imdbID, originalLanguage, originalTitle, overview: String?
-    let popularity: Int?
+    let popularity: Double?
     let posterPath: String?
     let productionCompanies: [ProductionCompany]?
     let productionCountries: [ProductionCountry]?
@@ -110,8 +110,7 @@ struct Genre: Codable {
 // MARK: - ProductionCompany
 struct ProductionCompany: Codable {
     let id: Int?
-    let logoPath: String?
-    let name, originCountry: String?
+    let logoPath, name, originCountry: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -133,9 +132,11 @@ struct ProductionCountry: Codable {
 
 // MARK: - SpokenLanguage
 struct SpokenLanguage: Codable {
+    let englishName: String?
     let iso639_1, name: String?
 
     enum CodingKeys: String, CodingKey {
+        case englishName = "english_name"
         case iso639_1 = "iso_639_1"
         case name
     }
