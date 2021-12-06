@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MovieCollectionViewCell" customModule="KitaMovie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="128" height="176"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="128" height="176"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ar3-04-oif">
+                        <rect key="frame" x="0.0" y="0.0" width="128" height="144.5"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDT-Us-FYJ">
+                        <rect key="frame" x="0.0" y="156.5" width="128" height="19.5"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="IDT-Us-FYJ" firstAttribute="top" secondItem="ar3-04-oif" secondAttribute="bottom" constant="12" id="0A9-GT-aPr"/>
+                <constraint firstAttribute="bottom" secondItem="IDT-Us-FYJ" secondAttribute="bottom" id="1sT-TY-ML9"/>
+                <constraint firstItem="IDT-Us-FYJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="6hh-Gj-qPp"/>
+                <constraint firstAttribute="trailing" secondItem="IDT-Us-FYJ" secondAttribute="trailing" id="IjD-ND-he4"/>
+                <constraint firstAttribute="trailing" secondItem="ar3-04-oif" secondAttribute="trailing" id="S3M-xM-QfH"/>
+                <constraint firstItem="ar3-04-oif" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aRb-vB-xN2"/>
+                <constraint firstItem="ar3-04-oif" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yjJ-aJ-uyN"/>
+            </constraints>
+            <size key="customSize" width="128" height="176"/>
+            <connections>
+                <outlet property="posterView" destination="ar3-04-oif" id="D1c-EH-2IV"/>
+                <outlet property="titleLabel" destination="IDT-Us-FYJ" id="9z2-7u-QXK"/>
+            </connections>
+            <point key="canvasLocation" x="188.40579710144928" y="119.86607142857142"/>
+        </collectionViewCell>
+    </objects>
+</document>

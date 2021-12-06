@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ReviewCollectionViewCell" customModule="KitaMovie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="128" height="176"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="128" height="176"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8LG-Pi-vbn">
+                        <rect key="frame" x="0.0" y="0.0" width="128" height="149.5"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hb-dU-SwV">
+                        <rect key="frame" x="0.0" y="161.5" width="128" height="14.5"/>
+                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2hb-dU-SwV" secondAttribute="trailing" id="5CA-8g-RCX"/>
+                <constraint firstItem="8LG-Pi-vbn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BGw-OK-sdd"/>
+                <constraint firstAttribute="trailing" secondItem="8LG-Pi-vbn" secondAttribute="trailing" id="LOS-Ny-Vc9"/>
+                <constraint firstAttribute="bottom" secondItem="2hb-dU-SwV" secondAttribute="bottom" id="bRx-ZB-2if"/>
+                <constraint firstItem="8LG-Pi-vbn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="byd-U1-OVn"/>
+                <constraint firstItem="2hb-dU-SwV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="i4Q-vz-MUL"/>
+                <constraint firstItem="2hb-dU-SwV" firstAttribute="top" secondItem="8LG-Pi-vbn" secondAttribute="bottom" constant="12" id="iFf-po-l8W"/>
+            </constraints>
+            <size key="customSize" width="128" height="176"/>
+            <connections>
+                <outlet property="avatarImageView" destination="8LG-Pi-vbn" id="HqH-hZ-lgG"/>
+                <outlet property="contentLabel" destination="2hb-dU-SwV" id="N5W-NE-M5F"/>
+            </connections>
+            <point key="canvasLocation" x="155.07246376811597" y="108.48214285714285"/>
+        </collectionViewCell>
+    </objects>
+</document>
