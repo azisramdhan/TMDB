@@ -25,11 +25,15 @@ class BaseViewController: UIViewController {
     }
 
     func showIndicatorView() {
-        indicatorView.startAnimating()
+        DispatchQueue.main.async { [weak self] in
+            self?.indicatorView.startAnimating()
+        }
     }
 
     func hideIndicatorView() {
-        indicatorView.stopAnimating()
+        DispatchQueue.main.async {  [weak self] in
+            self?.indicatorView.stopAnimating()
+        }
     }
 
 }
