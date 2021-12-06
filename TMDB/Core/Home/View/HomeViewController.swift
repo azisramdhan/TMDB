@@ -67,8 +67,12 @@ class HomeViewController: BaseViewController {
     }
 
     private func setupCompletionHandler() {
-        homeVM.onErrorGetMovies = { _ in
+        homeVM.onErrorGetMovies = { error in
             self.hideIndicatorView()
+            self.showMessage(error) { [weak self] _ in
+                guard let self = self else { return }
+                self.fetchData()
+            }
         }
 
         homeVM.onSuccessGetMovies = {

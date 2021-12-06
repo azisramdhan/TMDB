@@ -83,7 +83,10 @@ class DetailViewController: BaseViewController {
 
         movieDetailVM.onErrorGetMovieDetail = { error in
             self.hideIndicatorView()
-            print(error)
+            self.showMessage(error) { [weak self] _ in
+                guard let self = self, let movieId = self.movieId else { return }
+                self.movieDetailVM.getMovieDetail(movieId)
+            }
         }
 
         movieDetailVM.onSuccessGetReviews = {
@@ -93,7 +96,10 @@ class DetailViewController: BaseViewController {
 
         movieDetailVM.onErrorGetReviews = { error in
             self.hideIndicatorView()
-            print(error)
+            self.showMessage(error) { [weak self] _ in
+                guard let self = self, let movieId = self.movieId else { return }
+                self.movieDetailVM.getReviews(movieId)
+            }
         }
         
         movieDetailVM.onSuccessGetVideos = {
@@ -103,7 +109,10 @@ class DetailViewController: BaseViewController {
 
         movieDetailVM.onErrorGetVideos = { error in
             self.hideIndicatorView()
-            print(error)
+            self.showMessage(error) { [weak self] _ in
+                guard let self = self, let movieId = self.movieId else { return }
+                self.movieDetailVM.getVideos(movieId)
+            }
         }
     }
 
