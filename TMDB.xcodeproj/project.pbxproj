@@ -41,6 +41,7 @@
 		930B7FC0275DA01D0096C20C /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 930B7FBD275DA01D0096C20C /* Inter-Medium.ttf */; };
 		930B7FC1275DA01D0096C20C /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 930B7FBE275DA01D0096C20C /* Lato-Regular.ttf */; };
 		930B7FC2275DA01D0096C20C /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 930B7FBF275DA01D0096C20C /* Lato-Medium.ttf */; };
+		930B7FC7275DA3660096C20C /* TMDBDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B7FC6275DA3660096C20C /* TMDBDetailTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		930B7FBD275DA01D0096C20C /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		930B7FBE275DA01D0096C20C /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		930B7FBF275DA01D0096C20C /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		930B7FC6275DA3660096C20C /* TMDBDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBDetailTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				930B7EEF275D0A440096C20C /* TMDBTests.swift */,
+				930B7FC6275DA3660096C20C /* TMDBDetailTests.swift */,
 			);
 			path = TMDBTests;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				930B7EF0275D0A440096C20C /* TMDBTests.swift in Sources */,
+				930B7FC7275DA3660096C20C /* TMDBDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

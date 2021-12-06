@@ -1,42 +1,40 @@
 //
-//  TMDBTests.swift
+//  TMDBDetailTests.swift
 //  TMDBTests
 //
-//  Created by Azis Ramdhan on 05/12/21.
+//  Created by Azis Ramdhan on 06/12/21.
 //
 
 import XCTest
 @testable import TMDB
 
-class TMDBTests: XCTestCase {
+class TMDBDetailTests: XCTestCase {
 
     // NetMonitor wraps NWPathMonitor, providing a convenient way to check for a network connection
     let networkMonitor = NetMonitor.shared
     // System Under Test (SUT), or the object this test case class is concerned with testing
-    var sut: HomeViewModel!
+    var sut: DetailViewModel!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        try super.setUpWithError()
-        sut = HomeViewModel(service: HomeDataService())
+        sut = DetailViewModel(service: DetailDataService())
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        sut = nil
-        try super.tearDownWithError()
     }
 
-    func testPostsNotEmpty() throws {
+    func testMovieDetailExist() throws {
         try XCTSkipUnless(networkMonitor.netOn, "Network connectivity needed for this test.")
         let promise = expectation(description: "Completion handler invoked")
-        sut.onSuccessGetMovies = {
+        sut.onSuccessGetMovieDetail = {
             promise.fulfill()
         }
-        sut.getMovies(.popular)
+        let venomMovieId = 580489
+        sut.getMovieDetail(venomMovieId)
 
         wait(for: [promise], timeout: 5)
-        XCTAssertFalse(sut.movies.isEmpty)
+        XCTAssertNotNil(sut.movie)
     }
 
     func testExample() throws {
