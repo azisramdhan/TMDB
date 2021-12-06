@@ -47,8 +47,27 @@ class DetailViewController: BaseViewController {
         }
         favoriteSwitch.isOn = movieDetailVM.isFavorites(appDelegate, id: movieId)
     }
+    
+    private func openWebView(_ url: URL) {
+        let vc = WebViewController()
+        vc.youtubeURL = url
+        present(vc, animated: true, completion: nil)
+    }
+    
     @IBAction func trailerTouchedUp(_ sender: Any) {
-        onTrailerButtonClicked?()
+        if movieDetailVM.videos.count == 1 {
+            onTrailerButtonClicked?()
+        } else {
+            let alert = UIAlertController(title: "Youtube", message: "Please Select a Trailer", preferredStyle: .actionSheet)
+            for video in movieDetailVM.videos {
+                alert.addAction(UIAlertAction(title: video.name, style: .default) { [weak self] _ in
+                    guard let url = video.youtubeURL else { return }
+                    self?.openWebView(url)
+                })
+            }
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:nil ))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func valueChanged(_ sender: UISwitch) {
@@ -152,12 +171,10 @@ class DetailViewController: BaseViewController {
     }
     
     private func setupVideo() {
-        if let video = movieDetailVM.videos?.results?.first, let url = video.youtubeURL {
+        if let video = movieDetailVM.videos.first, let url = video.youtubeURL {
             trailerButton.isHidden = false
             onTrailerButtonClicked = { [weak self] in
-                let vc = WebViewController()
-                vc.youtubeURL = url
-                self?.present(vc, animated: true, completion: nil)
+                self?.openWebView(url)
             }
         } else {
             trailerButton.isHidden = true

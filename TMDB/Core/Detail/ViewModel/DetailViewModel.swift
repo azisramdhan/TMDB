@@ -25,7 +25,7 @@ class DetailViewModel {
     private let service: DetailDataService?
     var movie: MovieDetail?
     var results: [Result] = []
-    var videos: Videos?
+    var videos: [Video] = []
 
     func getMovieDetail(_ id: Int) {
         service?.getMovieDetailWith(id, successHandler: { data in

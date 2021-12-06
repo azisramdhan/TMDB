@@ -70,7 +70,7 @@ class DetailDataService {
         task.resume()
     }
     
-    func getVideosWith(_ id: Int, successHandler: @escaping (Videos?) -> Void,
+    func getVideosWith(_ id: Int, successHandler: @escaping ([Video]) -> Void,
                        errorHandler: @escaping (String) -> Void) {
         var components = URLComponents(string: "\(AppConstants.baseURL)/\(id)/videos")!
         components.queryItems = [
@@ -91,8 +91,9 @@ class DetailDataService {
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(Videos?.self, from: data)
+                guard let videos = response?.results else { return }
                 DispatchQueue.main.async {
-                    successHandler(response)
+                    successHandler(videos)
                 }
             } catch {
                 errorHandler(error.localizedDescription)
