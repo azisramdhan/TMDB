@@ -42,6 +42,7 @@
 		930B7FC1275DA01D0096C20C /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 930B7FBE275DA01D0096C20C /* Lato-Regular.ttf */; };
 		930B7FC2275DA01D0096C20C /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 930B7FBF275DA01D0096C20C /* Lato-Medium.ttf */; };
 		930B7FC7275DA3660096C20C /* TMDBDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B7FC6275DA3660096C20C /* TMDBDetailTests.swift */; };
+		93E1F00B275DCA41004A2898 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E1F00A275DCA41004A2898 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		930B7FBE275DA01D0096C20C /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		930B7FBF275DA01D0096C20C /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		930B7FC6275DA3660096C20C /* TMDBDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBDetailTests.swift; sourceTree = "<group>"; };
+		93E1F00A275DCA41004A2898 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				930B7F9D275D9CF80096C20C /* BaseViewController.swift */,
+				93E1F00A275DCA41004A2898 /* WebViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				930B7FAA275D9CF80096C20C /* HeaderCollectionViewCell.swift in Sources */,
 				930B7FBB275D9E8D0096C20C /* DataModel.xcdatamodeld in Sources */,
 				930B7FA0275D9CF80096C20C /* UIColor.swift in Sources */,
+				93E1F00B275DCA41004A2898 /* WebViewController.swift in Sources */,
 				930B7FA3275D9CF80096C20C /* HomeDataService.swift in Sources */,
 				930B7FB3275D9CF80096C20C /* BaseViewController.swift in Sources */,
 				930B7ED9275D0A430096C20C /* AppDelegate.swift in Sources */,

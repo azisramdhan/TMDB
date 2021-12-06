@@ -154,8 +154,10 @@ class DetailViewController: BaseViewController {
     private func setupVideo() {
         if let video = movieDetailVM.videos?.results?.first, let url = video.youtubeURL {
             trailerButton.isHidden = false
-            onTrailerButtonClicked = {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            onTrailerButtonClicked = { [weak self] in
+                let vc = WebViewController()
+                vc.youtubeURL = url
+                self?.present(vc, animated: true, completion: nil)
             }
         } else {
             trailerButton.isHidden = true
