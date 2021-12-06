@@ -14,7 +14,7 @@ class DetailViewModel {
 
     var onSuccessGetReviews: (() -> Void)?
     var onErrorGetReviews: ((String) -> Void)?
-    
+
     var onSuccessGetVideos: (() -> Void)?
     var onErrorGetVideos: ((String) -> Void)?
 
@@ -44,7 +44,7 @@ class DetailViewModel {
             self.onErrorGetReviews?(error)
         })
     }
-    
+
     func getVideos(_ id: Int) {
         service?.getVideosWith(id, successHandler: { data in
             self.videos = data

@@ -18,7 +18,7 @@ class DetailViewController: BaseViewController {
     @IBOutlet private weak var favoriteSwitch: UISwitch!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var trailerButton: UIButton!
-    
+
     private weak var appDelegate: AppDelegate? = UIApplication.shared.delegate as? AppDelegate
 
     private let movieDetailVM: DetailViewModel = {
@@ -47,29 +47,30 @@ class DetailViewController: BaseViewController {
         }
         favoriteSwitch.isOn = movieDetailVM.isFavorites(appDelegate, id: movieId)
     }
-    
+
     private func openWebView(_ url: URL) {
-        let vc = WebViewController()
-        vc.youtubeURL = url
-        present(vc, animated: true, completion: nil)
+        let webView = WebViewController()
+        webView.youtubeURL = url
+        present(webView, animated: true, completion: nil)
     }
-    
+
     @IBAction func trailerTouchedUp(_ sender: Any) {
         if movieDetailVM.videos.count == 1 {
             onTrailerButtonClicked?()
         } else {
-            let alert = UIAlertController(title: "Youtube", message: "Please Select a Trailer", preferredStyle: .actionSheet)
+            let alert = UIAlertController(title: "Youtube",
+                                          message: "Please Select a Trailer", preferredStyle: .actionSheet)
             for video in movieDetailVM.videos {
                 alert.addAction(UIAlertAction(title: video.name, style: .default) { [weak self] _ in
                     guard let url = video.youtubeURL else { return }
                     self?.openWebView(url)
                 })
             }
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:nil ))
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }
     }
-    
+
     @IBAction func valueChanged(_ sender: UISwitch) {
         guard let appDelegate = appDelegate else {
             return
@@ -120,7 +121,7 @@ class DetailViewController: BaseViewController {
                 self.movieDetailVM.getReviews(movieId)
             }
         }
-        
+
         movieDetailVM.onSuccessGetVideos = {
             self.hideIndicatorView()
             self.setupVideo()
@@ -169,7 +170,7 @@ class DetailViewController: BaseViewController {
         }
         fetchImageFrom(url)
     }
-    
+
     private func setupVideo() {
         if let video = movieDetailVM.videos.first, let url = video.youtubeURL {
             trailerButton.isHidden = false

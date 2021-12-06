@@ -69,7 +69,7 @@ class DetailDataService {
         }
         task.resume()
     }
-    
+
     func getVideosWith(_ id: Int, successHandler: @escaping ([Video]) -> Void,
                        errorHandler: @escaping (String) -> Void) {
         var components = URLComponents(string: "\(AppConstants.baseURL)/\(id)/videos")!

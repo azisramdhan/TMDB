@@ -100,7 +100,6 @@ struct SpokenLanguage: Codable {
     }
 }
 
-
 // MARK: - Videos
 struct Videos: Codable {
     let results: [Video]?
@@ -108,11 +107,11 @@ struct Videos: Codable {
 
 // MARK: - Video
 struct Video: Codable {
-    let id, iso639_1, iso3166_1, key: String?
+    let id, iso6391, iso31661, key: String?
     let name, site: String?
     let size: Int?
     let type: String?
-    
+
     var youtubeURL: URL? {
         guard site == "YouTube", let key = key else {
             return nil
@@ -122,8 +121,8 @@ struct Video: Codable {
 
     enum CodingKeys: String, CodingKey {
         case id
-        case iso639_1 = "iso_639_1"
-        case iso3166_1 = "iso_3166_1"
+        case iso6391 = "iso_639_1"
+        case iso31661 = "iso_3166_1"
         case key, name, site, size, type
     }
 }
